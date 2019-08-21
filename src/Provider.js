@@ -20,7 +20,7 @@ export default class Provider extends React.Component {
 
   loadUsers = async () => {
     const { users, page } = this.state;
-    Http.get(`users?page=${page + 1}&per_page=3`).then((response) => {
+    Http.get(`users?page=${page + 1}`).then((response) => {
       this.setState({
         users: users.concat(response.data.data),
         page: response.data.page,

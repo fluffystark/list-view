@@ -10,7 +10,7 @@ body {
 #App {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   min-height: 100vh;
 }
@@ -68,5 +68,9 @@ body {
   padding: 16px;
   border: none;
   outline: 0px;
+  text-align: center;
+}
+
+.end-of-list {
   text-align: center;
 }

@@ -13,6 +13,7 @@ export default class Provider extends React.Component {
     super(props);
     this.state = {
       users: [],
+      searchName: '',
       page: 0,
       lastPage: 0,
     };
@@ -29,6 +30,21 @@ export default class Provider extends React.Component {
     });
   };
 
+  searchNameChanged = (searchName) => {
+    this.setState({ searchName });
+  }
+
+  searchList = () => {
+    const { searchName, users } = this.state;
+
+    return searchName
+      ? users.filter((user) => {
+        const name = `${user.first_name} ${user.last_name}`;
+        return name.toLowerCase().indexOf(searchName.toLowerCase()) > -1;
+      })
+      : users;
+  }
+
   render() {
     const { children } = this.props;
 
@@ -37,6 +53,8 @@ export default class Provider extends React.Component {
         value={{
           ...this.state,
           loadUsers: this.loadUsers,
+          searchNameChanged: this.searchNameChanged,
+          searchList: this.searchList,
         }}
       >
         {children}

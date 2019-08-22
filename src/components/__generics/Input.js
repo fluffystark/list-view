@@ -23,7 +23,7 @@ export default function Input(props) {
       placeholder={placeholder}
       className={className}
       value={value}
-      onChange={handleChange}
+      onChange={(e) => handleChange(e.target.value)}
     />
   );
 }
